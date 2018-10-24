@@ -1,5 +1,7 @@
 create database amazing;
 
+\c amazing
+
 create table questions
 (
   id      integer not null
