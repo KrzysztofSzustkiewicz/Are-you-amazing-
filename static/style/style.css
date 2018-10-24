@@ -1,0 +1,43 @@
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+
+#gameBar {
+    position: relative;
+    background: rgba(255, 255, 0, 1);
+    text-align: center;
+}
+
+#gameBar > p {
+    margin-top: 30px;
+}
+
+#answerProgress {
+    margin-top: 100px;
+}
+
+
+.vertical {
+  -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+#question {
+    text-align: center;
+    height: 50px;
+    width: 300px;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -150px;
+    background: #aaaaaa;
+}
+
+#gameBoard {
+    position: relative;
+}
