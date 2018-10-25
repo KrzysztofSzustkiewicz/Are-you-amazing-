@@ -16,11 +16,19 @@
                 <span class="close">&times;</span>
                 <form class="form-inline">
                     <div class="form-group mx-sm-3 mb-2">
-                        <label for="inputPlayerName" class="sr-only">Player name</label>
-                        <input type="text" class="form-control" id="inputPlayerName" placeholder="Player Name">
+                        <span id="modalHeader"><h2>Welcome smartass!</h2></span>
+                        <div id="modalContent">
+                            <p>Please enter your name and select mentor to start game! </p>
+                            <label for="inputPlayerName" class="sr-only">Player name</label>
+                            <input type="text" class="form-control" id="inputPlayerName" placeholder="Player Name">
+                            <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
                 </form>
+                <div id="selectMentor">
+                    <button id="mikolaj"></button>
+                    <button id="mirek"></button>
+                </div>
             </div>
         </div>
         <div class="section float-left col-10 bg-light h-100 rounded-left" id="gameBoard">
