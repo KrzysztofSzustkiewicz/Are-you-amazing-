@@ -2,6 +2,7 @@
 {% block styles %}
     <!-- MODAL Stylesheet -->
             <link rel="stylesheet" href="{{ url_for('static', filename='style/modal.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='style/mikolaj.css') }}">
     <!-- MODAL JS script -->
             <script src="{{ url_for('static', filename='js/modal.js') }}" defer></script>
             <script src="{{ url_for('static', filename='js/dom.js') }}" defer></script>
@@ -17,10 +18,14 @@
                 <span class="close">&times;</span>
                 <form class="form-inline">
                     <div class="form-group mx-sm-3 mb-2">
-                        <label for="inputPlayerName" class="sr-only">Player name</label>
-                        <input type="text" class="form-control" id="inputPlayerName" placeholder="Player Name">
+                        <span id="modalHeader"><h2>Welcome smartass!</h2></span>
+                        <div id="modalContent">
+                            <p>Please enter your name and select mentor to start game! </p>
+                            <label for="inputPlayerName" class="sr-only">Player name</label>
+                            <input type="text" class="form-control" id="inputPlayerName" placeholder="Player Name">
+                            <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
                 </form>
             </div>
         </div>
