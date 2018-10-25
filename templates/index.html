@@ -32,7 +32,17 @@
             </div>
         </div>
         <div class="section float-left col-10 bg-light h-100 rounded-left" id="gameBoard">
-            <div id="question" class="card rounded"></div>
+            <div id="gameField" class="card rounded">
+                <div class="card rounded" id="questionCard">
+                    <div id="questionBody"></div>
+                </div>
+                <div class="card rounded" id="answerContainer">
+                    <div style="background: green"></div>
+                    <div style="background: green"></div>
+                    <div style="background: green"></div>
+                    <div style="background: red"></div>
+                </div>
+            </div>
         </div>
         <div class="section float-right col-2 h-100 rounded-right" id="gameBar">
             <p> Progress </p>
