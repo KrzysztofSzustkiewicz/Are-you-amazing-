@@ -2,6 +2,7 @@
 {% block styles %}
     <!-- MODAL Stylesheet -->
             <link rel="stylesheet" href="{{ url_for('static', filename='style/modal.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='style/mikolaj.css') }}">
     <!-- MODAL JS script -->
             <script src="{{ url_for('static', filename='js/modal.js') }}" defer></script>
 {% endblock %}
@@ -25,10 +26,6 @@
                         </div>
                     </div>
                 </form>
-                <div id="selectMentor">
-                    <button id="mikolaj"></button>
-                    <button id="mirek"></button>
-                </div>
             </div>
         </div>
         <div class="section float-left col-10 bg-light h-100 rounded-left" id="gameBoard">
