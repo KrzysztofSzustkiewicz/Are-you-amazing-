@@ -17,11 +17,21 @@ let dom = {
     },
 
     addAnswer: function(answers) {
-        answers.answersShuffle()
+        answers.answersShuffle();
         let answersBody = document.getElementById('answerContainer');
         for (let i=0; i < answers.length; i++){
             answersBody.innerHTML += `<div> ${answers[i]} </div>`
         }
+    },
+
+    launchGame: function() {
+        let modal = document.getElementById('myModal');
+        const player = document.getElementById('inputPlayerName').value;
+        modal.style.display = 'none';
+        console.log(player);
+        this.loadBoard();
+        this.loadBar();
+        console.log('dupa')
     }
 };
 
