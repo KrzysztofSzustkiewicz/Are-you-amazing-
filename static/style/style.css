@@ -27,16 +27,24 @@ html, body {
     transform: rotate(-90deg);
 }
 
-#question {
+#gameField {
     text-align: center;
-    height: 50px;
-    width: 300px;
+    height: 60%;
+    width: 80%;
     position: absolute;
     top: 50px;
     left: 50%;
-    margin-left: -150px;
+    margin-left: -40%;
     background: #aaaaaa;
 }
+
+    #questionCard {
+        width: 99%;
+        height: 40%;
+        margin: 0.5%;
+        text-align: center;
+        position: relative;
+    }
 
 #gameBoard {
     position: relative;
