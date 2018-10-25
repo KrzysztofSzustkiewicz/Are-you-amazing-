@@ -27,11 +27,12 @@ let dom = {
     launchGame: function() {
         let modal = document.getElementById('myModal');
         const player = document.getElementById('inputPlayerName').value;
+        const question = document.getElementById('questionBody');
+        const answer = document.getElementById('answerContainer');
         modal.style.display = 'none';
-        console.log(player);
         this.loadBoard();
         this.loadBar();
-        console.log('dupa')
+
     }
 };
 
