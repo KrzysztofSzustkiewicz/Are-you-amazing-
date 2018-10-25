@@ -5,6 +5,7 @@ html, body {
 
 
 #gameBar {
+    display: none;
     position: relative;
     background: rgba(255, 255, 0, 1);
     text-align: center;
@@ -70,4 +71,5 @@ html, body {
 
 #gameBoard {
     position: relative;
+    display: none;
 }
