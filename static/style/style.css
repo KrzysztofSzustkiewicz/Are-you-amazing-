@@ -43,7 +43,29 @@ html, body {
         height: 40%;
         margin: 0.5%;
         text-align: center;
+        display: table;
+    }
+
+        #questionBody {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+    #answerContainer {
+        width: 99%;
+        height: 56%;
+        margin: 0.5%;
+        text-align: center;
+        display: table;
+    }
+
+    #answerContainer > div {
         position: relative;
+        float: left;
+        width: 48%;
+        height: 42%;
+        margin: 1%;
+        border-radius: 5px;
     }
 
 #gameBoard {
