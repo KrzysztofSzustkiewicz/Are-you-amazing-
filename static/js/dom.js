@@ -1,4 +1,12 @@
 let dom = {
+    questionNum: 0,
+    questionNumMax: 9,
+    playerName: '',
+    playerAnswerId: '',
+    correctAnswerId: '',
+    questionCategory: '',
+    needToLearnCategory: [],
+
     loadBar: function() {
         let gameBar = document.getElementById('gameBar');
         gameBar.style.display = 'block'
@@ -7,6 +15,33 @@ let dom = {
     loadBoard: function() {
         let gameBoard = document.getElementById('gameBoard');
         gameBoard.style.display = 'block'
+    },
+
+    updateProgress: function() {
+        let progressBar = document.getElementById('progressBar');
+        progressBar.style.width = '' + this.questionNum * 10 + '%'
+    },
+
+    loadQuestion: function() {
+        dom.updateProgress();
+        if (dom.questionNum >= 10) {
+            dom.playerFeedback();
+        } else {
+            let questionField = document.getElementById('questionBody');
+            fetch('/get-question/' + this.questionNum)
+                .then(res => res.json())
+                .then(data => {
+                    questionField.innerHTML = data.message;
+                    this.questionCategory = data.category;
+                    fetch('/get-answers/' + data.id)
+                        .then(resAnswers => resAnswers.json())
+                        .then(answers => {
+                            this.addAnswer(answers)
+                        })
+                });
+
+        }
+
     },
 
     hideGame: function() {
@@ -19,19 +54,66 @@ let dom = {
     addAnswer: function(answers) {
         answers.answersShuffle();
         let answersBody = document.getElementById('answerContainer');
+        answersBody.innerHTML = '';
         for (let i=0; i < answers.length; i++){
-            answersBody.innerHTML += `<div> ${answers[i]} </div>`
+            let answerId = 'answer' + answers[i].id;
+            answersBody.innerHTML += `<div class="answerTab" id=${answerId} onclick="dom.markAnswer('${answerId}')"> <div class="answer"> ${answers[i].answer} </div></div>`;
+            //document.getElementById(answerId).addEventListener('click', this.markAnswer(answerId), true);
+            if (answers[i].correct_answer) {
+                this.correctAnswerId = answerId;
+            }
         }
     },
 
+    markAnswer: function(id) {
+
+        this.playerAnswerId = id;
+        document.getElementById(id).style.background = 'orange';
+        let answers = document.getElementsByClassName('answerTab');
+        for (let i = 0; i < answers.length; i++) {
+            answers[i].onclick = ''
+        }
+        setTimeout(this.markCorrectAnswer, 700)
+    },
+
+    evaluatePlayerAnswer: function() {
+      dom.questionNum += 1;
+      if (dom.correctAnswerId !== dom.playerAnswerId) {
+          dom.needToLearnCategory.push(dom.questionCategory);
+          swal ( "Oops" ,  "You've answered wrong" ,  "error" )
+              .then(dom.loadQuestion())
+      }  else {
+          swal ( "Gratulations", "You've answered correctly", "success")
+              .then(dom.loadQuestion())
+      }
+    },
+
+    playerFeedback: function() {
+        let feedbackMessage = '';
+        dom.needToLearnCategory.removeRepetitions();
+        let feedbackSkills = dom.needToLearnCategory;
+        for (let i=0; i < feedbackSkills.length; i++) {
+            feedbackMessage += 'You need to spend more time learning' + feedbackSkills[i] + '\n';
+        }
+        swal ( "You're Amazing, but:", feedbackMessage, "warning")
+            .then(dom.hideGame())
+    },
+
+    markCorrectAnswer: function() {
+        document.getElementById(dom.correctAnswerId).style.background = 'green';
+        setTimeout(dom.evaluatePlayerAnswer, 400)
+    },
+
     launchGame: function() {
+        dom.needToLearnCategory = [];
+        this.questionNum = 0;
         let modal = document.getElementById('myModal');
-        const player = document.getElementById('inputPlayerName').value;
-        const question = document.getElementById('questionBody');
-        const answer = document.getElementById('answerContainer');
+        this.playerName = document.getElementById('inputPlayerName').value;
         modal.style.display = 'none';
         this.loadBoard();
         this.loadBar();
+        fetch('/set-questions')
+            .then(res => this.loadQuestion());
 
     }
 };
@@ -45,3 +127,18 @@ Array.prototype.answersShuffle = function () {
                 this[i] = temp;
             }
         };
+
+Array.prototype.removeRepetitions= function() {
+    let d = this.length -1;
+    let i = this.sort();
+    let x = 0;
+    let z = 1;
+    for (let y = 0; y < d; y ++) {
+        if (i[z] === i[x]) {
+            i.splice(x, 1)
+        } else {
+            x += 1;
+            z += 1;
+        }
+    }
+};
