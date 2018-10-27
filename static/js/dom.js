@@ -1,4 +1,4 @@
-let dom = {
+ let dom = {
     questionNum: 0,
     questionNumMax: 9,
     playerName: '',
@@ -23,6 +23,8 @@ let dom = {
     },
 
     loadQuestion: function() {
+
+
         dom.updateProgress();
         if (dom.questionNum >= 10) {
             dom.playerFeedback();
@@ -57,7 +59,11 @@ let dom = {
         answersBody.innerHTML = '';
         for (let i=0; i < answers.length; i++){
             let answerId = 'answer' + answers[i].id;
-            answersBody.innerHTML += `<div class="answerTab" id=${answerId} onclick="dom.markAnswer('${answerId}')"> <div class="answer"> ${answers[i].answer} </div></div>`;
+            answersBody.innerHTML += `<div class="answerTab" id=${answerId} > 
+                                        <div class="answer"> ${answers[i].answer} 
+                                        </div>
+                                      </div>`;
+            answersBody.lastChild.on('click', dom.markAnswer(answerId));
             //document.getElementById(answerId).addEventListener('click', this.markAnswer(answerId), true);
             if (answers[i].correct_answer) {
                 this.correctAnswerId = answerId;
@@ -71,7 +77,7 @@ let dom = {
         document.getElementById(id).style.background = 'orange';
         let answers = document.getElementsByClassName('answerTab');
         for (let i = 0; i < answers.length; i++) {
-            answers[i].onclick = ''
+            answers[i].off('click');
         }
         setTimeout(this.markCorrectAnswer, 700)
     },
@@ -83,7 +89,7 @@ let dom = {
           swal ( "Oops" ,  "You've answered wrong" ,  "error" )
               .then(dom.loadQuestion())
       }  else {
-          swal ( "Gratulations", "You've answered correctly", "success")
+          swal ( "CONGratulations", "You've answered correctly", "success")
               .then(dom.loadQuestion())
       }
     },
