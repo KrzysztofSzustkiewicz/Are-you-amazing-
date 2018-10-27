@@ -17,10 +17,13 @@ html, body {
 
 #gameBar > p {
     margin-top: 30px;
+    font-family: monospace;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 #answerProgress {
-    margin-top: 100px;
+    margin-top: 150px;
 }
 
 
@@ -79,4 +82,10 @@ html, body {
 #gameBoard {
     position: relative;
     display: none;
+}
+
+#questionBody , .answer {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.8em;
 }
