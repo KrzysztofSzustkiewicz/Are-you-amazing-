@@ -51,7 +51,6 @@ let dom = {
         for (let i=0; i < answers.length; i++){
             let answerId = 'answer' + answers[i].id;
             answersBody.innerHTML += `<div class="answerTab" id=${answerId} onclick="dom.markAnswer('${answerId}')"> <div class="answer"> ${answers[i].answer} </div></div>`;
-            //document.getElementById(answerId).addEventListener('click', this.markAnswer(answerId), true);
             if (answers[i].correct_answer) {
                 this.correctAnswerId = answerId;
             }
@@ -60,13 +59,13 @@ let dom = {
 
     markAnswer: function(id) {
 
-        this.playerAnswerId = id;
-        document.getElementById(id).style.background = 'orange';
+        dom.playerAnswerId = id;
+        $('#'+id).css('background', 'orange');
         let answers = document.getElementsByClassName('answerTab');
         for (let i = 0; i < answers.length; i++) {
             answers[i].onclick = ''
         }
-        setTimeout(this.markCorrectAnswer, 700)
+        setTimeout(dom.markCorrectAnswer, 700)
     },
 
     evaluatePlayerAnswer: function() {
