@@ -41,10 +41,7 @@ let dom = {
     },
 
     hideGame: function() {
-        let gameBar = document.getElementById('gameBar');
-        let gameBoard = document.getElementById('gameBoard');
-        gameBar.style.display = 'none';
-        gameBoard.style.display = 'none';
+        $('#gameBar, #gameBoard').css('display', 'none')
     },
 
     addAnswer: function(answers) {
