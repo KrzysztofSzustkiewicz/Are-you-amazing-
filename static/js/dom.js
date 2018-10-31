@@ -16,8 +16,7 @@ let dom = {
     },
 
     updateProgress: function() {
-        let progressBar = document.getElementById('progressBar');
-        progressBar.style.width = '' + this.questionNum * 10 + '%'
+        $('#progressBar').css('width', dom.questionNum * 10 + '%')
     },
 
     loadQuestion: function() {
