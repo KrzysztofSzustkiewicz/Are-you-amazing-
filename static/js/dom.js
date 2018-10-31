@@ -115,7 +115,29 @@ let dom = {
         fetch('/set-questions')
             .then(res => this.loadQuestion());
 
-    }
+    },
+    loginToServer: function() {
+        let userLogin = document.getElementById('login-user-name').value;
+        let userPassword = document.getElementById('login-user-password').value;
+        let data = {'username': userLogin, 'password': userPassword};
+        fetch('/login', {
+            method: "POST",
+            headers: { "Content-Type": "application/json; charset=utf-8"},
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data == 'Accepted') {
+                    $('#loginModal').modal("hide");
+
+                } else {
+                    return swal ( "Oops" ,  "Something went wrong!" ,  "error" )
+                }
+            })
+    },
+    modalToggle: function (modalId) {
+        return $(modalId).modal("show")
+    },
 };
 
 Array.prototype.answersShuffle = function () {

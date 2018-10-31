@@ -1,22 +1,12 @@
 {% extends "layout.html" %}
-{% block styles %}
-    <!-- MODAL Stylesheet -->
-            <link rel="stylesheet" href="{{ url_for('static', filename='style/modal.css') }}">
-            <link rel="stylesheet" href="{{ url_for('static', filename='style/mikolaj.css') }}">
-    <!-- MODAL JS script -->
-            <script src="{{ url_for('static', filename='js/modal.js') }}" defer></script>
-            <script src="{{ url_for('static', filename='js/dom.js') }}" defer></script>
-            <script src="{{ url_for('static', filename='js/data_handler.js') }}" defer></script>
-            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" defer></script>
-{% endblock %}
 <body>
     {% block content %}
 
     <!-- The Modal for input users name and pick mentor -->
-        <div id="myModal" class="modal">
+        <div id="myModal" class="modalSeba">
 
     <!-- Modal content -->
-            <div class="modal-content">
+            <div class="modal-contentSeba">
                 <span class="close">&times;</span>
                 <form class="form-inline">
                     <div class="form-group mx-sm-3 mb-2">
@@ -25,7 +15,7 @@
                             <p>Please enter your name and select mentor to start game! </p>
                             <label for="inputPlayerName" class="sr-only">Player name</label>
                             <input type="text" class="form-control" id="inputPlayerName" placeholder="Player Name">
-                            <div role="button" class="btn btn-primary mb-2" onclick="dom.launchGame()" id="confirm  Button">Confirm identity</div>
+                            <div role="button" class="btn btn-primary mb-2" onclick="dom.launchGame()" id="confirmButton">Confirm identity</div>
                         </div>
                     </div>
                 </form>
