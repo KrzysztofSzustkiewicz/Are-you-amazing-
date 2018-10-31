@@ -8,13 +8,11 @@ let dom = {
     needToLearnCategory: [],
 
     loadBar: function() {
-        let gameBar = document.getElementById('gameBar');
-        gameBar.style.display = 'block'
+        $('#gameBar').css('display','block')
     },
 
     loadBoard: function() {
-        let gameBoard = document.getElementById('gameBoard');
-        gameBoard.style.display = 'block'
+        $('#gameBoard').css('display', 'block')
     },
 
     updateProgress: function() {
