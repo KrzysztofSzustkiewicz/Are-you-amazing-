@@ -24,16 +24,15 @@ let dom = {
         if (dom.questionNum >= 10) {
             dom.playerFeedback();
         } else {
-            let questionField = document.getElementById('questionBody');
-            fetch('/get-question/' + this.questionNum)
+            fetch('/get-question/' + dom.questionNum)
                 .then(res => res.json())
                 .then(data => {
-                    questionField.innerHTML = data.message;
-                    this.questionCategory = data.category;
+                    $('#questionBody').html(data.message);
+                    dom.questionCategory = data.category;
                     fetch('/get-answers/' + data.id)
                         .then(resAnswers => resAnswers.json())
                         .then(answers => {
-                            this.addAnswer(answers)
+                            dom.addAnswer(answers)
                         })
                 });
 
