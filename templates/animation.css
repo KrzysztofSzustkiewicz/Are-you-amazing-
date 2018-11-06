@@ -1,0 +1,65 @@
+#initialLogo {
+    width: 600px;
+    height: 600px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -275px;
+    margin-top: -275px;
+}
+
+    #logoTitle {
+        position: absolute;
+        top: 0;
+    }
+
+    #logoTitle img {
+        position: absolute;
+        margin-left: -240px;
+    }
+
+    #logoBody {
+        position: absolute;
+        bottom: 0;
+        height: 500px;
+        width: 100%;
+    }
+
+        #ccLogo {
+            width: 100px;
+            height: 100px;
+            background: url("CC_ico.png") no-repeat;
+            background-size: cover;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            animation-name: spin;
+            animation-duration: 3000ms;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        #mikolajLogo {
+            background: url("mikolaj-avatar.png");
+            clip-path: circle(50% at 50% 50%);
+            transform: scale(0.5);
+            width: 200px;
+            height: 227px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -100px;
+        }
+
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
